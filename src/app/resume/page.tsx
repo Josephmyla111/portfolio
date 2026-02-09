@@ -1,6 +1,7 @@
 import { profile } from "@/data/profile";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import PrintButton from "@/components/PrintButton";
 
 export const metadata = {
   title: "Resume | Joseph Raju Myla",
@@ -22,14 +23,8 @@ export default function ResumePage() {
             Back to Portfolio
           </Link>
 
-          {/* Optional: Print button (client-side only). If you don't need it, remove this block */}
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="inline-flex items-center rounded-md border px-3 py-2 text-sm font-medium hover:bg-accent no-print"
-          >
-            Print / Save PDF
-          </button>
+          {/* Client component (safe) */}
+          <PrintButton />
         </div>
       </div>
 
@@ -49,7 +44,11 @@ export default function ResumePage() {
             <span>·</span>
             <a
               className="hover:underline"
-              href={profile.linkedIn.startsWith("http") ? profile.linkedIn : `https://${profile.linkedIn}`}
+              href={
+                profile.linkedIn.startsWith("http")
+                  ? profile.linkedIn
+                  : `https://${profile.linkedIn}`
+              }
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -93,16 +92,23 @@ export default function ResumePage() {
 
           <div className="space-y-6">
             {profile.experience.map((job) => (
-              <div key={`${job.company}-${job.dates}`} className="break-inside-avoid">
+              <div
+                key={`${job.company}-${job.dates}`}
+                className="break-inside-avoid"
+              >
                 <div className="flex flex-wrap justify-between gap-2">
                   <div>
                     <h3 className="font-semibold">{job.company}</h3>
                     <p className="text-muted-foreground">{job.title}</p>
                   </div>
-                  <span className="text-sm text-muted-foreground">{job.dates}</span>
+                  <span className="text-sm text-muted-foreground">
+                    {job.dates}
+                  </span>
                 </div>
 
-                <p className="mb-2 text-sm text-muted-foreground">{job.location}</p>
+                <p className="mb-2 text-sm text-muted-foreground">
+                  {job.location}
+                </p>
 
                 <ul className="mb-2 ml-4 list-disc space-y-1">
                   {job.responsibilities.map((r, i) => (
