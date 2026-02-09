@@ -13,17 +13,11 @@ export default function ResumePage() {
     <div className="min-h-screen bg-background">
       <div className="no-print fixed left-0 right-0 top-0 z-50 border-b bg-background/95 px-6 py-4">
         <div className="mx-auto flex max-w-4xl items-center justify-between">
-          <Button asChild variant="ghost" size="sm" className="gap-2">
-            <Link href="/">
-              <ArrowLeft className="h-4 w-4" />
-              Back to Portfolio
-            </Link>
-          </Button>
-          <Button asChild size="sm">
-            <a href="/Joseph_Raju_Myla_CV.pdf" download="Joseph_Raju_Myla_CV.pdf">
-              Download PDF
-            </a>
-          </Button>
+         
+        <Link href="/" className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-accent">
+  <ArrowLeft className="h-4 w-4" />
+  Back to Portfolio
+</Link>
         </div>
       </div>
 
