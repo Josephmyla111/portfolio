@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     title: "Joseph Raju Myla | Trust & Safety | Content Review Specialist",
     description:
       "Detail-oriented Trust & Safety professional combining analytical expertise with content review, emotional resilience, and policy adherence.",
+    // If you don't own a domain yet, remove or replace with your Vercel URL later
     url: "https://josephmyla.com",
     siteName: "Joseph Myla Portfolio",
     type: "website",
@@ -26,7 +28,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Joseph Raju Myla | Trust & Safety Professional",
-    description: "Trust & Safety | Content Review Specialist | Data-Driven Analyst",
+    description:
+      "Trust & Safety | Content Review Specialist | Data-Driven Analyst",
   },
   robots: {
     index: true,
@@ -42,20 +45,23 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const stored = localStorage.getItem('portfolio-theme');
-                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const theme = stored === 'dark' || stored === 'light' ? stored : (systemDark ? 'dark' : 'light');
+        {/* Prevent theme flash: runs before React loads */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`
+            (function () {
+              try {
+                var stored = localStorage.getItem('portfolio-theme');
+                var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = (stored === 'dark' || stored === 'light') ? stored : (systemDark ? 'dark' : 'light');
+                document.documentElement.classList.remove('light','dark');
                 document.documentElement.classList.add(theme);
-              })();
-            `,
-          }}
-        />
+              } catch (e) {}
+            })();
+          `}
+        </Script>
       </head>
-      <body>
+
+      <body className="min-h-screen bg-background text-foreground antialiased">
         <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
           {children}
         </ThemeProvider>
