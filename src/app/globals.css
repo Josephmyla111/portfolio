@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 199 89% 48%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 22%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Professional gradient backgrounds */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(199 89% 96%) 35%, hsl(210 60% 95%) 70%, hsl(222 47% 97%) 100%);
+}
+
+.dark .bg-hero-gradient {
+  background: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(222 50% 14%) 30%, hsl(199 70% 18%) 60%, hsl(222 47% 11%) 100%);
+}
+
+.bg-section-gradient {
+  background: linear-gradient(180deg, transparent 0%, hsl(199 50% 97% / 0.5) 50%, transparent 100%);
+}
+
+.dark .bg-section-gradient {
+  background: linear-gradient(180deg, transparent 0%, hsl(199 50% 15% / 0.3) 50%, transparent 100%);
+}
+
+/* Subtle mesh pattern overlay */
+.bg-mesh-pattern {
+  background-image: 
+    radial-gradient(at 40% 20%, hsl(199 89% 48% / 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsl(222 47% 50% / 0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsl(199 70% 60% / 0.05) 0px, transparent 50%);
+}
+
+.dark .bg-mesh-pattern {
+  background-image: 
+    radial-gradient(at 40% 20%, hsl(199 89% 48% / 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsl(222 47% 50% / 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsl(199 70% 60% / 0.08) 0px, transparent 50%);
+}
+
+/* Card elevation for professional look */
+.card-elevated {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+}
+
+.dark .card-elevated {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.2);
+}
+
+/* Print styles for resume page */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
